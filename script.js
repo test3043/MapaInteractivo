@@ -19,10 +19,10 @@ L.icon = function (options) {
 var LeafIcon = L.Icon.extend({
     options: {
         shadowUrl: '/imagenes/sombra.png',
-        iconSize:     [38, 38], // size of the icon
+        iconSize:     [22, 22], // size of the icon
         shadowSize:   [50, 64], // size of the shadow
-        iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-        shadowAnchor: [4, 62],  // the same for the shadow
+        iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
+        shadowAnchor: [0, 3],  // the same for the shadow
         popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 
     }
@@ -30,7 +30,9 @@ var LeafIcon = L.Icon.extend({
 
 var iconoPlaza = new LeafIcon({ iconUrl: '/imagenes/town-hall_3438358.png' }),
     iconoMuseo = new LeafIcon({ iconUrl: '/imagenes/skull_764760.png' }),
-    iconoParque = new LeafIcon({ iconUrl: '/imagenes/pine-tree_3184640.png' });
+    iconoParque = new LeafIcon({ iconUrl: '/imagenes/pine-tree_3184640.png' }),
+    iconoMuseo2 = new LeafIcon({ iconUrl: '/imagenes/temple_2276638.png' }),
+    iconoFabrica = new LeafIcon({ iconUrl: '/imagenes/milk-factory_12687275.png' });
 
 // Marcador en la Plaza de la Patria
 var plazaPatria = L.marker([21.88187, -102.29495], { icon: iconoPlaza }).addTo(map);
@@ -39,9 +41,14 @@ plazaPatria.bindPopup("<b>Plaza de la Patria</b><br>Corazón de Aguascalientes."
 var museoMuerte = L.marker([21.88417, -102.28878], { icon: iconoMuseo }).addTo(map);
 museoMuerte.bindPopup("<b>Museo Nacional de la Muerte</b><br>Un lugar único.");
 // Marcador en el Parque Rodolfo Landeros
-var museoMuerte = L.marker([21.851175, -102.288122], { icon: iconoParque }).addTo(map);
-museoMuerte.bindPopup("<b>Parque Rodolfo Landeros Gallegos</b><br>Acercamiento a la naturaleza.");
-
+var parqueRodolfo = L.marker([21.851175, -102.288122], { icon: iconoParque }).addTo(map);
+parqueRodolfo.bindPopup("<b>Parque Rodolfo Landeros Gallegos</b><br>Acercamiento a la naturaleza.");
+// Marcador en el Museo José Guadalupe Posada
+var museoPosada = L.marker([21.875405, -102.292859], { icon: iconoMuseo2 }).addTo(map);
+museoPosada.bindPopup("<b>Museo José Guadalupe Posada</b><br>Descubre el grabado de la caricatura política.");
+// Marcador en el Parque Tres Centurias
+var parqueTres = L.marker([21.884367, -102.280741], { icon: iconoFabrica }).addTo(map);
+parqueTres.bindPopup("<b>Parque Tres Centurias</b><br>La historia del ferrocaril.");
 
 
 // Dibujar un círculo en el recinto de la Feria Nacional de San Marcos
