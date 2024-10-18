@@ -11,12 +11,38 @@ var marker = L.marker([21.88234, -102.28259]).addTo(map);
 // Añadir un pop-up al marcador
 marker.bindPopup("<b>¡Bienvenidos a Aguascalientes!</b><br>Capital del Estado.").openPopup();
 
+
+L.icon = function (options) {
+    return new L.Icon(options);
+};
+
+var LeafIcon = L.Icon.extend({
+    options: {
+        shadowUrl: '/imagenes/sombra.png',
+        iconSize:     [38, 38], // size of the icon
+        shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+        shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+
+    }
+});
+
+var iconoPlaza = new LeafIcon({ iconUrl: '/imagenes/town-hall_3438358.png' }),
+    iconoMuseo = new LeafIcon({ iconUrl: '/imagenes/skull_764760.png' }),
+    iconoParque = new LeafIcon({ iconUrl: '/imagenes/pine-tree_3184640.png' });
+
 // Marcador en la Plaza de la Patria
-var plazaPatria = L.marker([21.88187, -102.29495], {icon: iconoPlaza}).addTo(map);
+var plazaPatria = L.marker([21.88187, -102.29495], { icon: iconoPlaza }).addTo(map);
 plazaPatria.bindPopup("<b>Plaza de la Patria</b><br>Corazón de Aguascalientes.");
 // Marcador en el Museo Nacional de la Muerte
-var museoMuerte = L.marker([21.88417, -102.28878], {icon: iconoMuseo}).addTo(map);
+var museoMuerte = L.marker([21.88417, -102.28878], { icon: iconoMuseo }).addTo(map);
 museoMuerte.bindPopup("<b>Museo Nacional de la Muerte</b><br>Un lugar único.");
+// Marcador en el Parque Rodolfo Landeros
+var museoMuerte = L.marker([21.851175, -102.288122], { icon: iconoParque }).addTo(map);
+museoMuerte.bindPopup("<b>Parque Rodolfo Landeros Gallegos</b><br>Acercamiento a la naturaleza.");
+
+
 
 // Dibujar un círculo en el recinto de la Feria Nacional de San Marcos
 var feriaSanMarcos = L.circle([21.87888, -102.29727], {
@@ -48,22 +74,3 @@ var overlayMaps = {
 L.control.layers(baseMaps, overlayMaps).addTo(map);
 
 
-var LeafIcon = L.Icon.extend({
-    options: {
-        iconSize: [38, 95],
-        shadowSize: [50, 64],
-        iconAnchor: [22, 94],
-        shadowAnchor: [4, 62],
-        popupAnchor: [-3, -76]
-    }
-});
-
-var iconoPlaza = L.icon({
-    iconUrl: '/imagenes/town-hall_3438358.png',
-    shadowUrl: 'http://leafletjs.com/examples/custom-icons/leaf-shadow.png'
-});
-
-var iconoMuseo = L.icon({
-    iconUrl: '/imagenes/skull_764760.png',
-    shadowUrl: 'http://leafletjs.com/examples/custom-icons/leaf-shadow.png'
-});
